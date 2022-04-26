@@ -8,11 +8,15 @@ HEADERS = {'accept': '*/*',
 # html = 'https://www.bundestag.de/abgeordnete'
 max_offset = 736 + 1
 
-n = 0
-url_all = f'https://www.bundestag.de/ajax/filterlist/de/abgeordnete/862712-862712?limit=20&noFilterSet=true&offset={n}'
-html_ = requests.get(url_all, headers=HEADERS).text
+# n = 0
+# url_all = f'https://www.bundestag.de/ajax/filterlist/de/abgeordnete/862712-862712?limit=20&noFilterSet=true&offset={n}'
+# html_ = requests.get(url_all, headers=HEADERS).text
 
 
 
-with open('Data/Offset_0.html', 'w', encoding='utf-8') as file:
-    file.write(html_)
+with open('Data/Offset_0.html', 'r', encoding='utf-8') as file:
+    Offset = file.read()
+
+soup = BeautifulSoup(Offset, 'lxml')
+r = soup.find(class_='col-xs-4 col-sm-3 col-md-2 bt-slide').find(class_='bt-teaser-person-text').find('h3').text
+print(r)
