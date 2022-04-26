@@ -22,17 +22,19 @@ with open('Data/Offset_0.html', 'r', encoding='utf-8') as file:
 
 
 Person = {}
-
-for n in range(10):
+list_pers = []
+c = 1
+for n in range(2):
     Offset = f'https://www.bundestag.de/ajax/filterlist/de/abgeordnete/862712-862712?limit=20&noFilterSet=true&offset={n}'
     r = requests.get(Offset, headers=HEADERS).text
     soup = BeautifulSoup(r, 'lxml')
 
     all_people = soup.find_all(class_='col-xs-4 col-sm-3 col-md-2 bt-slide')
+
     for i in range(len(all_people)):
         people_link = f"{Site}{all_people[i].find('a')['href']}"
         people_name = all_people[i].find('div', class_='bt-teaser-person-text').find('h3').text
-
+        c+=1
 
         internet = requests.get(people_link, headers=HEADERS).text
         soup2 = BeautifulSoup(internet, 'lxml')
@@ -40,13 +42,17 @@ for n in range(10):
 
 
         dic_person = {}
+
         for i in r:
             dic_person[i.text.strip()] = i.find('a')['href']
-
         Person[people_name] = dic_person
+    list_pers.append(Person)
+
     print(f'Готова {n} страница')
-with open('Person.json', 'w', encoding='utf-8') as f:
-    json.dump(Person, f, indent=4, ensure_ascii=False)
+    print(f'количество имен: {c}')
+    print(f'Person: {len(Person)}\n\n')
+with open('Person2.json', 'w', encoding='utf-8') as f:
+    json.dump(list_pers, f, indent=4, ensure_ascii=False)
 
 
 # for people in all_people:
