@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1887e176-817c-4791-b966-e0dc51c9caf6" name="Changes" comment="чтение json">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="1887e176-817c-4791-b966-e0dc51c9caf6" name="Changes" comment="База">
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +178,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650985688421</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Конечный результат">
+      <created>1650986642553</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1650986642553</updated>
+    </task>
+    <task id="LOCAL-00011" summary="База">
+      <created>1650986674811</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1650986674811</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -218,6 +229,8 @@
     <MESSAGE value="Записали все ссылки в link_offset.txt" />
     <MESSAGE value="Ветка Автор" />
     <MESSAGE value="чтение json" />
-    <option name="LAST_COMMIT_MESSAGE" value="чтение json" />
+    <MESSAGE value="Конечный результат" />
+    <MESSAGE value="База" />
+    <option name="LAST_COMMIT_MESSAGE" value="База" />
   </component>
 </project>
