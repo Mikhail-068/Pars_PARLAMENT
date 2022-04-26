@@ -1,3 +1,5 @@
+import json
+
 import requests
 from bs4 import BeautifulSoup
 from pprint import pprint
@@ -18,23 +20,33 @@ max_offset = 736 + 1
 with open('Data/Offset_0.html', 'r', encoding='utf-8') as file:
     Offset = file.read()
 
-soup = BeautifulSoup(Offset, 'lxml')
-all_people = soup.find_all(class_='col-xs-4 col-sm-3 col-md-2 bt-slide')
-people_link = f"{Site}{all_people[0].find('a')['href']}"
-people_name = all_people[0].find('div', class_='bt-teaser-person-text').find('h3').text
-# print(people_name)
-# print(f"{Site}{people_link}")
 
-internet = requests.get(people_link, headers=HEADERS).text
-soup2 = BeautifulSoup(internet, 'lxml')
-r = soup2.find(class_='col-xs-12 col-md-4').find_all('li')
+Person = {}
+
+for n in range(10):
+    Offset = f'https://www.bundestag.de/ajax/filterlist/de/abgeordnete/862712-862712?limit=20&noFilterSet=true&offset={n}'
+    r = requests.get(Offset, headers=HEADERS).text
+    soup = BeautifulSoup(r, 'lxml')
+
+    all_people = soup.find_all(class_='col-xs-4 col-sm-3 col-md-2 bt-slide')
+    for i in range(len(all_people)):
+        people_link = f"{Site}{all_people[i].find('a')['href']}"
+        people_name = all_people[i].find('div', class_='bt-teaser-person-text').find('h3').text
 
 
-dic_person = {}
-for i in r:
-    dic_person[i.text.strip()] = i.find('a')['href']
+        internet = requests.get(people_link, headers=HEADERS).text
+        soup2 = BeautifulSoup(internet, 'lxml')
+        r = soup2.find(class_='col-xs-12 col-md-4').find_all('li')
 
-pprint(dic_person)
+
+        dic_person = {}
+        for i in r:
+            dic_person[i.text.strip()] = i.find('a')['href']
+
+        Person[people_name] = dic_person
+    print(f'Готова {n} страница')
+with open('Person.json', 'w', encoding='utf-8') as f:
+    json.dump(Person, f, indent=4, ensure_ascii=False)
 
 
 # for people in all_people:
