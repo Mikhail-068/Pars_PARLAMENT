@@ -1,7 +1,4 @@
-import json
+import numpy as np
 
-
-with open('Person2.json') as f:
-    man = json.load(f)
-
-print(len(man))
+for i in range(10):
+    print(np.random.randint(1,3 ))
