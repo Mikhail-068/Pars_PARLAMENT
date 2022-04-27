@@ -1,6 +1,4 @@
-.idea/
-Data/
+/Data/
 *.json
 test.py
 test3.py
-workspace.xml

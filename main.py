@@ -15,7 +15,7 @@ max_offset = 736 + 1
 # url_all = f'https://www.bundestag.de/ajax/filterlist/de/abgeordnete/862712-862712?limit=20&noFilterSet=true&offset={n}'
 # html_ = requests.get(url_all, headers=HEADERS).text
 
-# КАК СКАЧАТЬ JPG ==> https://www.youtube.com/watch?v=gvYGIhuiJQI&t=267s
+
 
 with open('Data/link_offset.txt', 'r', encoding='utf-8') as f:
     links = f.read()
